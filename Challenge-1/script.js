@@ -15,3 +15,6 @@ function checkWin(avgX, avgY) {
 	}
 }
 console.log(checkWin(scoreX, scoreY));
+
+
+test this 
