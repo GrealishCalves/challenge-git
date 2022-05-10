@@ -16,5 +16,12 @@ function checkWin(avgX, avgY) {
 }
 console.log(checkWin(scoreX, scoreY));
 
-
-test this 
+//--Arrays challenge
+function calcTip(bill) {
+	return bill >= 50 && bill <= 100 ? bill * 0.15 : bill * 0.2;
+}
+//const calcTip2 = (bill) =>
+//bill >= 50 && bill <= 100 ? bill * 0.15 : bill * 0.2;
+const bills = [50, 100, 43, 87];
+const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
+console.log(tips);
