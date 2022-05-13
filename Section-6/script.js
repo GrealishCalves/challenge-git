@@ -1,5 +1,6 @@
 let secretKey = Math.trunc(Math.random() * 20) + 1;
 let stateScore = 20;
+let highScore = 0;
 
 document.querySelector(".check").addEventListener("click", function () {
 	const guess = Number(document.querySelector(".guess").value);
@@ -14,6 +15,10 @@ document.querySelector(".check").addEventListener("click", function () {
 		document.querySelector(".message").textContent = "Correct guess";
 		document.querySelector("body").style.backgroundColor = "#60b347";
 		document.querySelector(".number").style.width = "30rem";
+		if (stateScore > highScore) {
+			highScore = stateScore;
+			document.querySelector(".highscore").textContent = highScore;
+		}
 
 		// when guess is too high
 	} else if (guess > secretKey) {
