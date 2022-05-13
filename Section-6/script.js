@@ -1,4 +1,4 @@
-const secretKey = Math.trunc(Math.random() * 20) + 1;
+let secretKey = Math.trunc(Math.random() * 20) + 1;
 let stateScore = 20;
 
 document.querySelector(".check").addEventListener("click", function () {
@@ -36,4 +36,18 @@ document.querySelector(".check").addEventListener("click", function () {
 			document.querySelector(".message").textContent = "you lost the game";
 		}
 	}
+});
+
+document.querySelector(".again").addEventListener("click", function () {
+	stateScore = 20; // initialize the state score
+	secretKey = Math.trunc(Math.random() * 20) + 1; // initialize the secret key
+	//initialize the content
+	document.querySelector(".number").textContent = "?";
+	document.querySelector(".message").textContent = "start guessing...";
+	document.querySelector(".score").textContent = stateScore;
+	document.querySelector(".guess").value = "";
+
+	//initialize the style
+	document.querySelector("body").style.backgroundColor = "#222";
+	document.querySelector(".number").style.width = "15rem";
 });
