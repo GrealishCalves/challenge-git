@@ -1,5 +1,4 @@
 const secretKey = Math.trunc(Math.random() * 20) + 1;
-document.querySelector(".number").textContent = secretKey;
 let stateScore = 20;
 
 document.querySelector(".check").addEventListener("click", function () {
@@ -11,8 +10,8 @@ document.querySelector(".check").addEventListener("click", function () {
 
 		// when there is a guess
 	} else if (guess === secretKey) {
+		document.querySelector(".number").textContent = secretKey;
 		document.querySelector(".message").textContent = "Correct guess";
-
 		document.querySelector("body").style.backgroundColor = "#60b347";
 		document.querySelector(".number").style.width = "30rem";
 
