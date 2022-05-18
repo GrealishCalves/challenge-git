@@ -11,16 +11,32 @@ const diceEl = document.querySelector(".dice");
 const btnNew = document.querySelector(".btn--new");
 const btnRoll = document.querySelector(".btn--roll");
 const btnHold = document.querySelector(".btn--hold");
-const score = [0, 0];
-let stateScore = 0;
-let activePlayer = 0;
-let playing = true;
 
-//: Manipulate String elements
-score0Element.textContent = 0;
-score1Element.textContent = 0;
-diceEl.classList.add("hidden");
+let score, stateScore, activePlayer, playing;
 
+// FUNCTION: Create a initialize state function
+const init = function () {
+	// staring state
+	score = [0, 0];
+	stateScore = 0;
+	activePlayer = 0;
+	playing = true;
+
+	// reset state
+	score0Element.textContent = 0;
+	currentScore0El.textContent = 0;
+	score1Element.textContent = 0;
+	currentScore1El.textContent = 0;
+
+	// reset winner
+	diceEl.classList.add("hidden");
+	player0El.classList.remove("player--winner");
+	player0El.classList.add("player--active");
+	player1El.classList.remove("player--winner");
+	player1El.classList.remove("player--active");
+};
+// calling the initialize
+init();
 //FUNCTION: switchPlayer function
 const switchPlayer = function () {
 	// define a current--player
@@ -33,8 +49,7 @@ const switchPlayer = function () {
 	player0El.classList.toggle("player--active");
 	player1El.classList.toggle("player--active");
 };
-
-//FUNCTION: Manipulate DiceRoll
+//FUNCTION: Manipulate DiceRoll function
 btnRoll.addEventListener("click", function () {
 	if (playing) {
 		// generate a new random Number
@@ -53,7 +68,7 @@ btnRoll.addEventListener("click", function () {
 		}
 	}
 });
-//FUNCTION: create winner
+//FUNCTION: create winner function
 btnHold.addEventListener("click", function () {
 	if (playing) {
 		// add current score to active players score
@@ -64,6 +79,7 @@ btnHold.addEventListener("click", function () {
 		if (score[activePlayer] >= 20) {
 			// un-active the dice
 			playing = false;
+			diceEl.classList.add("hidden");
 			document
 				.querySelector(`.player--${activePlayer}`)
 				.classList.add("player--winner");
@@ -72,3 +88,5 @@ btnHold.addEventListener("click", function () {
 		}
 	}
 });
+//FUNCTION: reset function
+btnNew.addEventListener("click", init);
