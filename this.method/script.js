@@ -1,45 +1,34 @@
-// "use strict";
-//HINT: hoisting variable's
+"use strict";
+//HINT: using "this" in a function deceleration
 
-console.log(me); //undefined (creat var in window.me with no value)
-console.log(me2); //need to initialize (TDZ)
-console.log(me3); //need to initialize (TDZ)
-
-var me = "maxim";
-let me2 = "john";
-const me3 = 1991;
-
-//HINT: hoisting variable's
-
-//function deceleration - can call the function before defined
-console.log(addDeclaration(1, 2));
-function addDeclaration(a, b) {
-	return a + b;
-}
-
-//function expression - Cannot access 'addExpression' before initialization (const = variable in TDZ)
-console.log(addExpression(1, 2));
-const addExpression = function (a, b) {
-	return a + b;
+//regular function doesn't have a object owner, "this" method would be (undefined) / without the strict mode it will be a global object
+const calcAge = function (year) {
+	console.log(2022 - year);
+	console.log(this);
 };
+calcAge(1991);
 
-//function expression - addExpression is not a function (the function was hoisting to "undefined" var (undefined(1,2)))
-console.log(addExpression2(1, 2));
-var addExpression2 = function (a, b) {
-	return a + b;
+//arrow function use "this" as a lexical, and the parent scope is "windows" (global scope)
+const calcAgeArrow = (year) => {
+	console.log(2022 - year);
+	console.log(this);
 };
+calcAgeArrow(1991);
 
-//Function Arrow - Cannot access 'addExpression' before initialization (const = variable in TDZ)
-console.log(addArrow(1, 2));
-const addArrow = (a, b) => a + b;
+//HINT: using "this" as an method declaration
 
-//HINT: hoisting example of error in
-//because of the hoisting var variables got undefined value
-//and the "undefined" is a false and the function was execute
-if (!numOfProducts) {
-	deleteShoppingCart();
-}
-var numOfProducts = 100;
-function deleteShoppingCart() {
-	console.log("shopping cart deleted");
-}
+const maxim = {
+	year: 1991,
+	calcAge: function () {
+		console.log(2022 - this.year);
+	},
+};
+calcAge(); // calling the method without a owner object - undefined
+maxim.calcAge(); // calling the method with a owner object to calculate maxim age
+
+const matilda = {
+	year: 2001,
+};
+matilda.calcAge = maxim.calcAge; // copy the calcAge method to matilda (method borrowed)
+matilda.calcAge(); // using maxim method to calculate age of matilda as an object owner
+maxim.calcAge();
