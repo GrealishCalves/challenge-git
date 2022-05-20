@@ -1,4 +1,6 @@
 "use strict";
+
+
 //HINT: using "this" in a function deceleration
 
 //regular function doesn't have a object owner, "this" method would be (undefined) / without the strict mode it will be a global object
@@ -15,7 +17,7 @@ const calcAgeArrow = (year) => {
 };
 calcAgeArrow(1991);
 
-//HINT: using "this" as an method declaration
+//HINT: using "this" as an method declaration (objects)
 
 const maxim = {
 	year: 1991,
@@ -32,3 +34,6 @@ const matilda = {
 matilda.calcAge = maxim.calcAge; // copy the calcAge method to matilda (method borrowed)
 matilda.calcAge(); // using maxim method to calculate age of matilda as an object owner
 maxim.calcAge();
+
+const f = maxim.calcAge; // copy the calcAge without call the function (regular function as a variable)
+f(); // the year is undefined because "this" method is not attached to the object owner
