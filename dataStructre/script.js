@@ -53,11 +53,23 @@ const rest2 = {
 };
 
 // destructure object
-const { mainCurses, open, par } = rest2; // have to be like the original properties
-console.log(open, mainCurses);
+// const { mainCurses, open, par } = rest2; // have to be like the original properties
+// console.log(open, mainCurses);
 
 // assign new name to properties
 const { name: restName, open: hours, par: testPar } = rest2;
 console.log(restName, hours, testPar);
 
 // mutating variables
+let a = 111;
+let b = 202;
+const obj = { a: 23, b: 43 };
+console.log(a, b); // we want to mutated "let: 111,202" to "23,43" and destructure
+({ a, b } = obj);
+console.log(a, b); // we mutated them and destructured them
+
+// nested object
+const {
+	fri: { open: o, close: c },
+} = rest2.open; // get the object "open" and destructure them and rename them "o,c"
+console.log(o, c);
