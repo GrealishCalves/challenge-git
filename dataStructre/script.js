@@ -50,6 +50,7 @@ const rest2 = {
 		},
 	},
 	par: ["par1", "par2", "par3"],
+	orderDelivery: function () {},
 };
 
 // destructure object
@@ -68,8 +69,45 @@ console.log(a, b); // we want to mutated "let: 111,202" to "23,43" and destructu
 ({ a, b } = obj);
 console.log(a, b); // we mutated them and destructured them
 
-// nested object
+// destructure nested object
 const {
 	fri: { open: o, close: c },
 } = rest2.open; // get the object "open" and destructure them and rename them "o,c"
 console.log(o, c);
+
+//HINT: Practice using destructure object and function instead
+
+const restaurant = {
+	name: "Classico Italiano",
+	location: "Via Angelo Tavanti 23, Firenze, Italy",
+	categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
+	starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
+	mainMenu: ["Pizza", "Pasta", "Risotto"],
+	pastaSuse: ["options1", "options2", "options3"],
+
+	getAnOrder: function (positionStarterMenu, positionMainMenu) {
+		return [
+			this.starterMenu[positionStarterMenu],
+			this.mainMenu[positionMainMenu],
+		];
+	},
+	orderDelivery: function ({
+		orderTime = "00:00",
+		Name = "unknown",
+		starterMenu = 0,
+		mainMenu = 0,
+	}) {
+		console.log(
+			`order time: ${orderTime} name: ${Name} received!, ${this.starterMenu[starterMenu]}, ${this.mainMenu[mainMenu]}`
+		);
+	},
+};
+console.log(restaurant.getAnOrder(1, 1));
+
+const orderObj1 = {
+	mainMenu: 0,
+	starterMenu: 1,
+	orderTime: "15:15",
+	Name: "john",
+};
+console.log(restaurant.orderDelivery(orderObj1));
