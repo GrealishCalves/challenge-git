@@ -107,6 +107,11 @@ const restaurant = {
 			`order time: ${orderTime} name: ${Name} received!, ${this.starterMenu[starterMenu]}, ${this.mainMenu[mainMenu]}`
 		);
 	},
+	orderPasta: function (ing1, ing2, ing3) {
+		console.log(
+			`here is your Delicious pasta with ${ing1} and ${ing2} and ${ing3}`
+		);
+	},
 };
 console.log(restaurant.getAnOrder(1, 1));
 
@@ -134,3 +139,12 @@ console.log([...restaurant.mainMenu, ...restaurant.starterMenu]);
 //iterables; array,strings, maps. sets. NOT object
 const str = "maxim";
 console.log(...str);
+
+//real world example
+const ingredients = [
+	prompt("let make pasta! ingredients 1?"),
+	prompt("ingredients 2?"),
+	prompt("ingredients 3?"),
+];
+
+// console.log(restaurant.orderPasta(...ingredients)); // calling to function
