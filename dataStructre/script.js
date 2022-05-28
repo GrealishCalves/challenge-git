@@ -118,4 +118,19 @@ const orderObj1 = {
 };
 var arr2 = restaurant.orderDelivery(orderObj1);
 
-//:HINT: spread operator
+//HINT: spread operator
+
+const arr3 = [1, 2, 3];
+console.log([7, 5, ...arr3]); //add array to array
+console.log(...arr3); //spread array value
+console.log([...restaurant.mainMenu, "Gnocci"]); //based an array create a new array
+
+//copy array
+console.log([...restaurant.mainMenu]);
+
+//join 2 array
+console.log([...restaurant.mainMenu, ...restaurant.starterMenu]);
+
+//iterables; array,strings, maps. sets. NOT object
+const str = "maxim";
+console.log(...str);
