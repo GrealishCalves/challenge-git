@@ -86,10 +86,16 @@ const restaurant = {
 	pastaSuse: ["options1", "options2", "options3"],
 
 	getAnOrder: function (positionStarterMenu, positionMainMenu) {
-		return [
+		let arr = [
 			this.starterMenu[positionStarterMenu],
 			this.mainMenu[positionMainMenu],
 		];
+		if (positionMainMenu === 1) {
+			arr.push(this.pastaSuse[Math.floor(Math.random() * 3)]);
+			return arr;
+		} else {
+			return arr;
+		}
 	},
 	orderDelivery: function ({
 		orderTime = "00:00",
@@ -110,4 +116,6 @@ const orderObj1 = {
 	orderTime: "15:15",
 	Name: "john",
 };
-console.log(restaurant.orderDelivery(orderObj1));
+var arr2 = restaurant.orderDelivery(orderObj1);
+
+//:HINT: spread operator
