@@ -184,3 +184,16 @@ add(2, 6, 4, 5, 6);
 const sa = [23, 5, 7];
 add(...sa);
 
+//HINT: for loop
+
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu) console.log(item);
+
+for (const item of menu.entries()) {
+	console.log(item);
+}
+
+for (const [i, elements] of menu.entries()) console.log(i, elements);
+
+//HINT: enhanced object literal
