@@ -140,7 +140,7 @@ console.log([...restaurant.mainMenu, ...restaurant.starterMenu]);
 const str = "maxim";
 console.log(...str);
 
-//real world example
+//real world example for spread operator
 const ingredients = [
 	prompt("let make pasta! ingredients 1?"),
 	prompt("ingredients 2?"),
@@ -148,3 +148,12 @@ const ingredients = [
 ];
 
 // console.log(restaurant.orderPasta(...ingredients)); // calling to function
+
+//object
+const newRestaurant = {
+	foundIn: 1991,
+	...restaurant,
+	founder: "maxim",
+};
+
+console.log(newRestaurant);
