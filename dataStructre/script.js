@@ -147,13 +147,11 @@ const ingredients = [
 	prompt("ingredients 3?"),
 ];
 
-// console.log(restaurant.orderPasta(...ingredients)); // calling to function
+console.log(restaurant.orderPasta(...ingredients));
 
-//object
+//object copy via spread
 const newRestaurant = {
 	foundIn: 1991,
 	...restaurant,
 	founder: "maxim",
 };
-
-console.log(newRestaurant);
