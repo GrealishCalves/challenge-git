@@ -115,6 +115,7 @@ const restaurant = {
 };
 console.log(restaurant.getAnOrder(1, 1));
 
+//using an destructure as an function argument
 const orderObj1 = {
 	mainMenu: 0,
 	starterMenu: 1,
@@ -141,13 +142,13 @@ const str = "maxim";
 console.log(...str);
 
 //real world example for spread operator
-const ingredients = [
-	prompt("let make pasta! ingredients 1?"),
-	prompt("ingredients 2?"),
-	prompt("ingredients 3?"),
-];
+// const ingredients = [
+// 	prompt("let make pasta! ingredients 1?"),
+// 	prompt("ingredients 2?"),
+// 	prompt("ingredients 3?"),
+// ];
 
-console.log(restaurant.orderPasta(...ingredients));
+// console.log(restaurant.orderPasta(...ingredients));
 
 //object copy via spread
 const newRestaurant = {
@@ -155,3 +156,31 @@ const newRestaurant = {
 	...restaurant,
 	founder: "maxim",
 };
+
+//HINT: rest
+
+//rest from array
+const [pizza, , risotto, ...leftValueArray] = [
+	...restaurant.mainMenu,
+	...restaurant.starterMenu,
+];
+console.log(pizza, leftValueArray);
+
+//rest from object
+const { sat, ...weekdays } = rest2.open;
+console.log(weekdays);
+
+//function rest - insert whole array as an argument
+function add(...number) {
+	let sum = 0;
+	for (let i = 0; i < number.length; i++) sum += number[i];
+	console.log(sum);
+}
+
+add(2, 4);
+add(2, 5, 5);
+add(2, 6, 4, 5, 6);
+
+const sa = [23, 5, 7];
+add(...sa);
+
