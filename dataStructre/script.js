@@ -197,3 +197,23 @@ for (const item of menu.entries()) {
 for (const [i, elements] of menu.entries()) console.log(i, elements);
 
 //HINT: enhanced object literal
+
+//HINT: optional chaining
+
+// console.log(rest2.open.sun.open); //error
+// console.log(rest2.open.sun?.open); //undefined
+
+//optional chaining & nullish
+const weekDays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+for (const day of weekDays) {
+	const isOpenHour = rest2.open[day]?.open ?? "closed";
+	console.log(`on ${day}, we open at ${isOpenHour}`);
+}
+
+//optional chaining & method
+console.log(restaurant.getAnOrder?.(2, 1) ?? "method does not exist");
+
+//optional chaining & array
+const user = [{ name: "user", email: "hh@gmail.com" }];
+const user2 = [];
+console.log(user2[0]?.name ?? "user array empty");
