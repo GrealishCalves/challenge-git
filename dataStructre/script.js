@@ -217,3 +217,20 @@ console.log(restaurant.getAnOrder?.(2, 1) ?? "method does not exist");
 const user = [{ name: "user", email: "hh@gmail.com" }];
 const user2 = [];
 console.log(user2[0]?.name ?? "user array empty");
+
+//looping objects
+
+//by loop deceleration
+for (const key of Object.values(rest2.open)) {
+	console.log(key);
+}
+
+//by Object.key expression
+const properties = Object.keys(rest2.open);
+console.log(properties);
+
+//by entries
+const entries = Object.entries(rest2.open);
+for (const [key, { open, close }] of entries) {
+	console.log(`on ${key} we open ${open} and close ${close} `);
+}
