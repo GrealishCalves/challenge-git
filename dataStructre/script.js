@@ -232,5 +232,6 @@ console.log(properties);
 //by entries
 const entries = Object.entries(rest2.open);
 for (const [key, { open, close }] of entries) {
-	console.log(`on ${key} we open ${open} and close ${close} `);
+	console.log(`on ${key} we open ${open} and close ${close}`);
 }
+
