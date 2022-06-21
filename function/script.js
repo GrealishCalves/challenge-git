@@ -2,23 +2,23 @@
 // javascript doesn't work with passing by reference
 
 // the function createBooking is called with the parameters flightNum and numPassenger setting the default value of numPassenger to 1 and price to 200
-// const bookings = [];
-// const createBooking = (
-// 	flightNum,
-// 	numPassenger = 1,
-// 	price = 200 * numPassenger
-// ) => {
-// 	const booking = {
-// 		flightNum,
-// 		numPassenger,
-// 		price,
-// 	};
-// 	console.log(booking);
-// 	bookings.push(booking);
-// };
-// createBooking("LV123", 2, 100);
-// createBooking("LV123", 2);
-// createBooking("LV123", undefined, 100);
+const bookings = [];
+const createBooking = (
+	flightNum,
+	numPassenger = 1,
+	price = 200 * numPassenger
+) => {
+	const booking = {
+		flightNum,
+		numPassenger,
+		price,
+	};
+	console.log(booking);
+	bookings.push(booking);
+};
+createBooking("LV123", 2, 100);
+createBooking("LV123", 2);
+createBooking("LV123", undefined, 100);
 
 const object = {
 	name: "John duane",
@@ -55,3 +55,77 @@ console.log(flight);
 
 newPassport(object);
 checkInflight(flight, object); // passing
+
+//HINT: functions accepting callback functions as arguments
+
+const oneWord = function (str) {
+	return str.replace(/ /g, "").toLowerCase();
+};
+
+const upperFirstWord = function (str) {
+	const [first, second, ...rest] = str.split(" ");
+	return [first.toUpperCase(), second.toUpperCase(), ...rest].join(" ");
+};
+
+//HINT: higher order functions
+
+const transformer = function (str, func) {
+	console.log(`original string: ${str}`);
+	console.log(`transformed string: ${func(str)}`);
+};
+
+transformer("JavaScript is the best", upperFirstWord);
+
+//HINT: functions returning functions
+
+const greet = function (greet) {
+	return function (name) {
+		return `${greet} ${name}`;
+	};
+};
+console.log(greet("Hello")("John")); // passing a function as an argument to another function
+
+const greet2 = (greeting) => (name) => `${greeting} ${name}`; // using arrow function
+console.log(greet2("Hello")("maxim"));
+
+// HINT: functions call and apply method calls
+
+const lufthansa = {
+	airline: "Lufthansa",
+	iata: "LH",
+	booking: [],
+	book(flightNum, passNum) {
+		this.booking.push({
+			flightNum: `${this.iata}${flightNum}`,
+			passNum,
+		});
+	},
+};
+const easyJet = {
+	airline: "EasyJet",
+	iata: "EZ",
+	booking: [],
+};
+const book = lufthansa.book; // copy the method book to a new function book
+const bookEasyJet = book.bind(easyJet); // bind the method book to the object easyJet
+const bookEasyJetExposits = book.bind(easyJet, "LV1233333"); // partial application - part of the arguments are passed
+
+book.call(easyJet, "123", 1);
+console.log(easyJet);
+
+//HINT: functions method
+
+bookEasyJet("LV123", 2);
+bookEasyJetExposits(24);
+console.log(easyJet);
+
+easyJet.planes = 300;
+easyJet.buyPlanes = function (num) {
+	this.planes++;
+	console.log(this);
+};
+
+document
+	.querySelector(".buy")
+	.addEventListener("click", easyJet.buyPlanes.bind(easyJet));
+console.log(easyJet);
