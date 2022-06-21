@@ -119,13 +119,14 @@ bookEasyJet("LV123", 2);
 bookEasyJetExposits(24);
 console.log(easyJet);
 
+// buyPlanes is a method of the object easyJet
 easyJet.planes = 300;
 easyJet.buyPlanes = function (num) {
 	this.planes++;
 	console.log(this);
 };
-
+// in this case the 'this' keyword refers to the object easyJet and not to the function buyPlanes
 document
 	.querySelector(".buy")
-	.addEventListener("click", easyJet.buyPlanes.bind(easyJet));
+	.addEventListener("click", easyJet.buyPlanes.bind(easyJet)); // bind the method buyPlanes to the object easyJet (partial application - increase the number of planes)
 console.log(easyJet);
