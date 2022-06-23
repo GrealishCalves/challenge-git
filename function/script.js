@@ -67,8 +67,6 @@ const upperFirstWord = function (str) {
 	return [first.toUpperCase(), second.toUpperCase(), ...rest].join(" ");
 };
 
-//HINT: higher order functions
-
 const transformer = function (str, func) {
 	console.log(`original string: ${str}`);
 	console.log(`transformed string: ${func(str)}`);
@@ -130,3 +128,12 @@ document
 	.querySelector(".buy")
 	.addEventListener("click", easyJet.buyPlanes.bind(easyJet)); // bind the method buyPlanes to the object easyJet (partial application - increase the number of planes)
 console.log(easyJet);
+
+//HINT: partial application
+
+const addTax = function (price, tax) {
+	return price + price * tax;
+};
+
+const addVat = addTax.bind(undefined, 100, 0.2); // partial application - part of the arguments are passed
+console.log(addVat());
